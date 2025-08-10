@@ -22,8 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - run: npm ci
+          # belangrijk: GEEN cache hier, want je hebt geen lockfile
+      - run: npm install
       - run: npm run build -- --base=/${{ github.event.repository.name }}/
       - uses: actions/upload-pages-artifact@v3
         with:
